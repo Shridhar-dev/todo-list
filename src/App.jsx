@@ -24,6 +24,7 @@ function App() {
   }
 
   useEffect(()=>{
+    if (JSON.parse(localStorage.getItem("todos")) !== null)
     setTodos(JSON.parse(localStorage.getItem("todos")))
   },[])
 
@@ -35,7 +36,7 @@ function App() {
         <button onClick={addTodo}>Add todo</button>
       </div>
       <ol>
-        { todos.map((todo, i)=>( <ListComponent key={i} index={i} name={todo} removeTodo={removeTodo}/>)) }
+        { todos?.map((todo, i)=>( <ListComponent key={i} index={i} name={todo} removeTodo={removeTodo}/>)) }
       </ol>
     </>
   )
